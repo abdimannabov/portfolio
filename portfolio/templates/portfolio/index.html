@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-<title>Portfolio</title>
+<title>{{ title }}</title>
 {% endblock title %}
 
 {% block main %}
 <main>
+    <!-- Page Header -->
+    <header class="header" id="home">
+        {% block header %}
+        {% include 'components/header.html' %}
+        {% endblock header %}
+    </header>
+    <!-- End of Page Header -->
     <!-- About section -->
     <section id="about" class="section mt-3">
         <div class="container mt-5">
@@ -77,76 +84,26 @@
             <h6 class="section-title mb-4">Mening proyektlarim:</h6>
 
             <div class="row">
+                {% for project in projects %}
                 <div class="col-sm-4">
                     <div class="img-wrapper">
-                        <img src="{% static 'imgs/folio-1.jpg' %}" alt="">
+                        <img src="{{ project.get_photo }}" alt="">
                         <div class="overlay">
                             <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
+                                <h5>{{project.title}}</h5>
+                                <a href="{{ project.get_photo }}"><i class="ti-zoom-in"></i></a>
+                                <a href="{% url 'detail' %}"><i class="ti-link"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <div class="img-wrapper">
-                        <img src="{% static 'imgs/folio-2.jpg' %}" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>
-                        </div>
+                        <p>{{ project.title }}</p>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="img-wrapper">
-                        <img src="{% static 'imgs/folio-3.jpg' %}" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img-wrapper">
-                        <img src="{% static 'imgs/folio-4.jpg' %}" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="img-wrapper">
-                        <img src="{% static 'imgs/folio-5.jpg' %}" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img-wrapper">
-                        <img src="{% static 'imgs/folio-6.jpg' %}" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
 
         </div>
     </section>
     <!-- End of portfolio section -->
+    {% include 'components/footer.html' %}
 </main>
 {% endblock main %}
