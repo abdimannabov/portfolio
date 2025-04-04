@@ -3,5 +3,5 @@ from portfolio.views import *
 
 urlpatterns = [
     path("", index, name="index"),
-    path("detail/", detail, name="detail")
+    path("detail/<int:pk>/", detail, name="detail")
 ]

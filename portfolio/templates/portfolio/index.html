@@ -18,7 +18,7 @@
         <div class="container mt-5">
             <div class="row text-center text-md-left">
                 <div class="col-md-3">
-                    <img src="{% static 'imgs/avatar.jpg' %}" alt="" class="img-thumbnail mb-4">
+                    <img src="media/portret.jpg" alt="" class="img-thumbnail mb-4">
                 </div>
                 <div class="pl-md-4 col-md-9">
                     <h6 class="title">Abdimannabov Sohib</h6>
@@ -27,7 +27,6 @@
                         back-endi hamda bazasini yaratish ko'nikmalari &#9989</p>
                     <p>O'zlashtirgan bilimlarim bo'yicha o'z mustaqil qilgan va dars davomida haqiqiy proyektlar
                         yaratish &#9989</p>
-                    <button class="btn btn-primary rounded mt-3">DOWNLOAD CV</button>
                 </div>
             </div>
         </div>
@@ -92,7 +91,7 @@
                             <div class="overlay-infos">
                                 <h5>{{project.title}}</h5>
                                 <a href="{{ project.get_photo }}"><i class="ti-zoom-in"></i></a>
-                                <a href="{% url 'detail' %}"><i class="ti-link"></i></a>
+                                <a href="{% url 'detail' project.pk %}"><i class="ti-link"></i></a>
                             </div>
                         </div>
                         <p>{{ project.title }}</p>
